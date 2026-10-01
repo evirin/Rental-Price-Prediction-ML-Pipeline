@@ -49,6 +49,12 @@ flowchart TD
     
     J1 --> K["Hybrid Stacking Ensemble"]
     J2 --> K
+    J3 --> K
+    J4 --> K
+    J5 --> K
+    
+    K --> L["Model Evaluation: R2 = 0.610 - MAE = 20.38 EUR - RMSE = 37.83 EUR"]
+```
 
 ## Experimental Results
 
@@ -62,8 +68,5 @@ flowchart TD
 | Recurrent Neural Network (LSTM) | 0.548 | 23.40 | 41.20 |
 
 > **Key Takeaway:** The multi-stage **Hybrid Stacking Ensemble** outperformed all standalone tree-based and deep learning baselines, achieving the lowest error variance and explaining **61.0% of price variance** across the Greek short-term rental market.
-    J3 --> K
-    J4 --> K
-    J5 --> K
     
     K --> L["Model Evaluation: R2 = 0.610 - MAE = 20.38 EUR - RMSE = 37.83 EUR"]
