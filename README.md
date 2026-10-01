@@ -20,33 +20,46 @@ An end-to-end Machine Learning and data engineering pipeline designed to predict
 - **Core Languages & Libraries:** Python, Pandas, NumPy, scikit-learn
 - **Machine Learning & Deep Learning:** LightGBM, XGBoost, TensorFlow, Keras
 - **Execution Environment:** Kaggle Kernels (GPU T4×2)
+
 ## Pipeline Workflow
 
 ```mermaid
 graph TD
-    A[Raw Data Ingestion<br/>22,226 Airbnb Listings] --> C[Data Cleaning & Preprocessing]
-    B[10 Macroeconomic Indicators] --> D[Time-Lagged Joins]
+    A["Raw Data Ingestion<br/>22,226 Airbnb Listings"] --> C["Data Cleaning & Preprocessing"]
+    B["10 Macroeconomic Indicators"] --> D["Time-Lagged Joins"]
     C --> D
     
-    D --> E[scikit-learn Pipeline Framework]
+    D --> E["scikit-learn Pipeline Framework"]
     
-    subgraph Feature_Engineering [Leakage-Free Processing]
-        E --> F[Missing Value Imputation]
-        F --> G[StandardScaler & Categorical Encoding]
-        G --> H[Feature Selection: SelectKBest k=89]
+    subgraph Feature_Engineering ["Leakage-Free Processing"]
+        E --> F["Missing Value Imputation"]
+        F --> G["StandardScaler & Categorical Encoding"]
+        G --> H["Feature Selection: SelectKBest (k=89)"]
     end
     
-    H --> I[Model Training & Benchmarking]
+    H --> I["Model Training & Benchmarking"]
     
-    subgraph Models [Candidate Architectures]
-        I --> J1[FFNN]
-        I --> J2[LSTM]
-        I --> J3[Random Forest]
-        I --> J4[Gradient Boosting]
-        I --> J5[LightGBM]
+    subgraph Models ["Candidate Architectures"]
+        I --> J1["FFNN"]
+        I --> J2["LSTM"]
+        I --> J3["Random Forest"]
+        I --> J4["Gradient Boosting"]
+        I --> J5["LightGBM"]
     end
     
-    J1 & J2 & J3 & J4 & J5 --> K[Hybrid Stacking Ensemble]
+    J1 --> K
+    J2 --> K
+    J3 --> K
+    J4 --> K
+    J5 --> K
+    K["Hybrid Stacking Ensemble"]
+    
+    K --> L["Model Evaluation<br/>R2: 0.610 • MAE: 20.38 EUR • RMSE: 37.83 EUR"]
+
+    style K fill:#238636,stroke:#2ea043,stroke-width:2px,color:#fff
+    style L fill:#1f6feb,stroke:#388bfd,stroke-width:2px,color:#fff
+
+
     
     K --> L[Model Evaluation<br/><b>R² = 0.610 | MAE = €20.38 | RMSE = €37.83</b>]
 
