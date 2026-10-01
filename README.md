@@ -24,8 +24,8 @@ An end-to-end Machine Learning and data engineering pipeline designed to predict
 ## Pipeline Workflow
 
 ```mermaid
-graph TD
-    A["Raw Data Ingestion<br/>22,226 Airbnb Listings"] --> C["Data Cleaning & Preprocessing"]
+flowchart TD
+    A["Raw Data Ingestion (22,226 Airbnb Listings)"] --> C["Data Cleaning & Preprocessing"]
     B["10 Macroeconomic Indicators"] --> D["Time-Lagged Joins"]
     C --> D
     
@@ -47,21 +47,10 @@ graph TD
         I --> J5["LightGBM"]
     end
     
-    J1 --> K
+    J1 --> K["Hybrid Stacking Ensemble"]
     J2 --> K
     J3 --> K
     J4 --> K
     J5 --> K
-    K["Hybrid Stacking Ensemble"]
     
-    K --> L["Model Evaluation<br/>R2: 0.610 • MAE: 20.38 EUR • RMSE: 37.83 EUR"]
-
-    style K fill:#238636,stroke:#2ea043,stroke-width:2px,color:#fff
-    style L fill:#1f6feb,stroke:#388bfd,stroke-width:2px,color:#fff
-
-
-    
-    K --> L[Model Evaluation<br/><b>R² = 0.610 | MAE = €20.38 | RMSE = €37.83</b>]
-
-    style K fill:#238636,stroke:#2ea043,stroke-width:2px,color:#fff
-    style L fill:#1f6feb,stroke:#388bfd,stroke-width:2px,color:#fff
+    K --> L["Model Evaluation: R2 = 0.610 - MAE = 20.38 EUR - RMSE = 37.83 EUR"]
